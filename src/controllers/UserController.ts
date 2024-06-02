@@ -82,50 +82,50 @@ class UserController {
     }
   }
 
-  // static async SignInUser(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     const { email, password }: { email: string; password: string } = req.body;
+  static async SignInUser(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { email, password }: { email: string; password: string } = req.body;
 
-  //     const user: UserData | null = await User.findOne({ where: { email } });
-  //     if (!user) {
-  //       res.status(404).json({ message: "User not found" });
-  //       return;
-  //     }
+      const user: UserData | null = await User.findOne({ where: { email } });
+      if (!user) {
+        res.status(404).json({ message: "User not found" });
+        return;
+      }
 
-  //     const isPasswordValid: boolean = await bcrypt.compare(
-  //       password,
-  //       user.password
-  //     );
-  //     if (!isPasswordValid) {
-  //       res.status(401).json({ message: "Incrrect password " });
-  //       return;
-  //     }
-  //     if (!user.isVerified) {
-  //       res.status(401).json({ message: "Please Verify YourSelf🚦" });
-  //       return;
-  //     }
-  //     const token: string = jwt.sign(
-  //       {
-  //         first_name: user.first_name,
-  //         last_name: user.last_name,
-  //         id: user.id,
-  //         phone_number: user.phone_number,
-  //         isPremium: user.isPremium,
-  //         isVerified: user.isVerified,
-  //         email: user.email,
-  //       },
-  //       process.env.TOKEN_SECRET as string
-  //     );
-  //     res.status(201).json({ message: "Login Successful", data: token });
-  //   } catch (error) {
-  //     console.error("Error while signing in: ", error);
-  //     res.status(500).json({ message: "Server error" });
-  //   }
-  // }
+      const isPasswordValid: boolean = await bcrypt.compare(
+        password,
+        user.password
+      );
+      if (!isPasswordValid) {
+        res.status(401).json({ message: "Incrrect password " });
+        return;
+      }
+      if (!user.isVerified) {
+        res.status(401).json({ message: "Please Verify YourSelf🚦" });
+        return;
+      }
+      const token: string = jwt.sign(
+        {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          id: user.id,
+          phone_number: user.phone_number,
+          isPremium: user.isPremium,
+          isVerified: user.isVerified,
+          email: user.email,
+        },
+        process.env.TOKEN_SECRET as string
+      );
+      res.status(201).json({ message: "Login Successful", data: token });
+    } catch (error) {
+      console.error("Error while signing in: ", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  }
 
   // static async UserProfile(
   //   req: Request & { user?: any },
@@ -149,27 +149,27 @@ class UserController {
   //   }
   // }
 
-  // static async verifyUser(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     console.log("PARAMS::: ", req.params.id);
-  //     const userExist = await User.findByPk(req.params.id);
-  //     if (!userExist) {
-  //       res.status(403).json({ message: "User don't exist" });
-  //       return;
-  //     }
-  //     await userExist.update({
-  //       isVerified: true,
-  //     } as UserData);
-  //     res.status(200).json({ message: "User Verification Sccessful" });
-  //   } catch (error) {
-  //     console.error("Error while verifing User");
-  //     res.status(500).json({ message: "Server Error" });
-  //   }
-  // }
+  static async verifyUser(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      console.log("PARAMS::: ", req.params.id);
+      const userExist = await User.findByPk(req.params.id);
+      if (!userExist) {
+        res.status(403).json({ message: "User don't exist" });
+        return;
+      }
+      await userExist.update({
+        isVerified: true,
+      } as UserData);
+      res.status(200).json({ message: "User Verification Sccessful" });
+    } catch (error) {
+      console.error("Error while verifing User");
+      res.status(500).json({ message: "Server Error" });
+    }
+  }
   // static generateSixDigitCode(): string {
   //   const min = 100000;
   //   const max = 999999;
