@@ -1,21 +1,13 @@
-import { User } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
-const Sib: any = require("sib-api-v3-sdk");
-
-interface UserData {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  phone_number: string;
-  isPremium: boolean;
-  isVerified: boolean;
-  forgotPasswordCode: string;
-}
+import UserService from "../services/userServices";
+import HTTP_STATUSES from "../utils/httpStatuses";
+import { AppError } from "../utils/errors";
+import {
+  sendVerificationEmail,
+  sendForgotPasswordEmail,
+} from "../utils/emailService";
 
 class UserController {
   static async addUser(
@@ -24,130 +16,119 @@ class UserController {
     next: NextFunction
   ): Promise<void> {
     try {
-      const {
-        first_name,
-        last_name,
-        email,
-        password,
-        phone_number,
-      }: {
-        first_name: string;
-        last_name: string;
-        email: string;
-        password: string;
-        phone_number: string;
-      } = req.body;
-      const existingUser: UserData | null = await User.findOne({
-        where: { email },
-      });
-
+      const { first_name, last_name, email, password, phone_number } = req.body;
+      const existingUser = await UserService.findUserByEmail(email);
       if (existingUser) {
-        res.status(400).json({ message: "User already exists" });
-        return;
+        throw new AppError(
+          "User already exists",
+          HTTP_STATUSES.BAD_REQUEST.code
+        );
       }
-
-      const hashedPassword: string = await bcrypt.hash(password, 10);
-      const newUser: UserData = await User.create({
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = await UserService.createUser({
         first_name,
         last_name,
         email,
-        phone_number,
         password: hashedPassword,
-        isPremium: false,
+        phone_number,
         isVerified: false,
-      } as UserData);
-      const client: any = await Sib.ApiClient.instance;
-      const apiKey: any = await client.authentications["api-key"];
-      apiKey.apiKey = process.env.SENDBLUE;
-      const tranEmailApi = new Sib.TransactionalEmailsApi();
-      const sender = {
-        email: "sendmailm6@gmail.com",
-        name: "Abhishek",
-      };
-      const receivers = [{ email: email }];
-      tranEmailApi.sendTransacEmail({
-        sender,
-        to: receivers,
-        subject: "Verify Userself",
-        htmlContent: `<p>Verify yourself: <a href="http://localhost:3000/user/verify/${newUser.id}">Verify yourself</a></p>`,
       });
-      // console.log(tranEmailApi);
-
+      await sendVerificationEmail(newUser.email, newUser.id);
       res
-        .status(201)
-        .json({ message: "User created successfully", data: newUser });
+        .status(HTTP_STATUSES.CREATED.code)
+        .json({ message: "USer created successfully", data: newUser });
     } catch (error) {
-      console.error("Error while adding user:", error);
-      res.status(500).json({ message: "Server error" });
+      next(error);
     }
   }
-
-  static async SignInUser(
+  static async signInUser(
     req: Request,
     res: Response,
     next: NextFunction
   ): Promise<void> {
     try {
-      const { email, password }: { email: string; password: string } = req.body;
-
-      const user: UserData | null = await User.findOne({ where: { email } });
+      const { email, password } = req.body;
+      const user = await UserService.findUserByEmail(email);
       if (!user) {
-        res.status(404).json({ message: "User not found" });
-        return;
+        throw new AppError("User not found", HTTP_STATUSES.NOT_FOUND.code);
       }
-
-      const isPasswordValid: boolean = await bcrypt.compare(
-        password,
-        user.password
-      );
+      const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        res.status(401).json({ message: "Incrrect password " });
-        return;
+        throw new AppError(
+          "Incorrect password",
+          HTTP_STATUSES.UNAUTHORIZED.code
+        );
       }
       if (!user.isVerified) {
-        res.status(401).json({ message: "Please Verify YourSelf🚦" });
-        return;
+        throw new AppError(
+          "Please verify your account",
+          HTTP_STATUSES.UNAUTHORIZED.code
+        );
       }
-      const token: string = jwt.sign(
+      const token = jwt.sign(
         {
           first_name: user.first_name,
           last_name: user.last_name,
           id: user.id,
           phone_number: user.phone_number,
-          isPremium: user.isPremium,
           isVerified: user.isVerified,
           email: user.email,
+          image_url: user.image_url,
         },
         process.env.TOKEN_SECRET as string
       );
-      res.status(201).json({ message: "Login Successful", data: token });
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "Login successfull", data: token });
     } catch (error) {
-      console.error("Error while signing in: ", error);
-      res.status(500).json({ message: "Server error" });
+      next(error);
+    }
+  }
+  static async userProfile(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const user = await UserService.findUserByEmail(req.user.email);
+      if (!user?.isVerified) {
+        throw new AppError(
+          "Please verify your account",
+          HTTP_STATUSES.UNAUTHORIZED.code
+        );
+      }
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "Profile data retrieved successfully", data: user });
+    } catch (error) {
+      next(error);
     }
   }
 
-  // static async UserProfile(
-  //   req: Request & { user?: any },
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     const user: UserData | null = await User.findOne({
-  //       where: { email: req.user.email },
-  //       attributes: { exclude: ["password"] },
-  //     });
-  //     if (!user?.isVerified) {
-  //       res.status(404).json({ error: "Please Verify User!" });
-  //       return;
-  //     }
-  //     console.log(user);
-  //     res.status(201).json({ message: "Profile Data Successful", data: user });
-  //   } catch (error) {
-  //     console.error("Error in Profile: ", error);
-  //     res.status(500).json({ error: "Server error" });
-  //   }
-  // }
+  static async updateUserProfile(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { first_name, last_name, phone_number, image_url } = req.body;
+      const userId = req.user.id;
+
+      const updatedUser = await UserService.updateUserProfile(userId, {
+        first_name,
+        last_name,
+        phone_number,
+        image_url,
+      });
+
+      res.status(HTTP_STATUSES.ok.code).json({
+        message: "Profile updated successfully",
+        data: updatedUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 
   static async verifyUser(
     req: Request,
@@ -155,140 +136,137 @@ class UserController {
     next: NextFunction
   ): Promise<void> {
     try {
-      console.log("PARAMS::: ", req.params.id);
-      const userExist = await User.findByPk(req.params.id);
+      const userExist = await UserService.findUserById(Number(req.params.id));
       if (!userExist) {
-        res.status(403).json({ message: "User don't exist" });
-        return;
+        throw new AppError("User doesn't exist", HTTP_STATUSES.NOT_FOUND.code);
       }
-      await userExist.update({
-        isVerified: true,
-      } as UserData);
-      res.status(200).json({ message: "User Verification Sccessful" });
+      await UserService.verifyUser(userExist.id);
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "User verification successfully" });
     } catch (error) {
-      console.error("Error while verifing User");
-      res.status(500).json({ message: "Server Error" });
+      next(error);
     }
   }
-  // static generateSixDigitCode(): string {
-  //   const min = 100000;
-  //   const max = 999999;
-  //   const randomCode = Math.floor(Math.random() * (max - min + 1)) + min;
-  //   return randomCode.toString();
-  // }
-  // static async forgotPasswordEmail(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     const { email }: { email: string } = req.body;
-  //     const userExist = await User.findOne({ where: { email: email } });
-  //     if (!userExist) {
-  //       res.status(403).json({ message: "User don't exist" });
-  //       return;
-  //     }
-  //     const client = await Sib.ApiClient.instance;
-  //     const apiKey = await client.authentications["api-key"];
-  //     apiKey.apiKey = process.env.SENDBLUE;
-  //     const tranEmailApi = new Sib.TransactionalEmailsApi();
-  //     const sender = {
-  //       email: "sendmailm6@gmail.com",
-  //       name: "Abhishek",
-  //     };
-  //     const sixDigitCode = UserController.generateSixDigitCode();
-  //     await userExist.update({
-  //       forgotPasswordCode: sixDigitCode,
-  //     } as UserData);
-  //     const receivers = [{ email: email }];
-  //     tranEmailApi.sendTransacEmail({
-  //       sender,
-  //       to: receivers,
-  //       subject: "Update Password Code",
-  //       htmlContent: `<p>MoonExpense</p><p>OTP: <b>${sixDigitCode}</b></p>`,
-  //     });
+  static async forgotPasswordEmail(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { email } = req.body;
+      const userExist = await UserService.findUserByEmail(email);
+      if (!userExist) {
+        throw new AppError("User doesn't exist", HTTP_STATUSES.NOT_FOUND.code);
+      }
+      const forgotPasswordCode = UserService.generateSixDigitCode();
+      await UserService.updateForgotPasswordCode(
+        userExist.id,
+        forgotPasswordCode
+      );
+      await sendForgotPasswordEmail(email, forgotPasswordCode);
 
-  //     res.status(200).json({ message: "Update Password request" });
-  //   } catch (error) {
-  //     console.error("Error while password req", error);
-  //     res.status(500).json({ message: "Server Error" });
-  //   }
-  // }
-  // static async verifyForgotPassword(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     const {
-  //       forgotPasswordCode,
-  //       password,
-  //     }: { forgotPasswordCode: string; password: string } = req.body;
-  //     const { email } = req.params;
-  //     if (!forgotPasswordCode || !password || !email) {
-  //       res.status(403).json({ message: "provide all required information!" });
-  //       return;
-  //     }
-  //     const userExist = await User.findOne({ where: { email: email } });
-  //     if (!userExist) {
-  //       res.status(403).json({ message: "User don't exist" });
-  //       return;
-  //     }
-  //     if (userExist.forgotPasswordCode !== forgotPasswordCode) {
-  //       res.status(403).json({ message: "wrong Verification Code!" });
-  //       return;
-  //     }
-  //     const hashedPassword: string = await bcrypt.hash(password, 10);
-  //     await userExist.update({
-  //       password: hashedPassword,
-  //     } as UserData);
-  //     const client = await Sib.ApiClient.instance;
-  //     const apiKey = await client.authentications["api-key"];
-  //     apiKey.apiKey = process.env.SENDBLUE;
-  //     const tranEmailApi = new Sib.TransactionalEmailsApi();
-  //     const sender = {
-  //       email: "sendmailm6@gmail.com",
-  //       name: "Abhishek",
-  //     };
-  //     const receivers = [{ email: email }];
-  //     tranEmailApi.sendTransacEmail({
-  //       sender,
-  //       to: receivers,
-  //       subject: "MoonExpense",
-  //       htmlContent: `<p>MoonExpense</p><p><b>Password Updated Successfully!</b></p>`,
-  //     });
-  //     res.status(200).json({ message: "code verification Password" });
-  //   } catch (error) {
-  //     console.error("Error while code verification");
-  //     res.status(500).json({ message: "Server Error" });
-  //   }
-  // }
-  // static async changePassword(
-  //   req: Request & { user?: any },
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> {
-  //   try {
-  //     const { password }: { password: string } = req.body;
-  //     const userExist = await User.findByPk(req.user.id);
-  //     if (!userExist) {
-  //       res.status(403).json({ message: "User don't exist" });
-  //       return;
-  //     }
-  //     if (!userExist?.isVerified) {
-  //       res.status(404).json({ error: "Please Verify User!" });
-  //       return;
-  //     }
-  //     const hashedPassword: string = await bcrypt.hash(password, 10);
-  //     await userExist.update({
-  //       password: hashedPassword,
-  //     } as UserData);
-  //     res.status(200).json({ message: "Password Changed Successfully" });
-  //   } catch (error) {
-  //     console.error("Error while password change");
-  //     res.status(500).json({ message: "Server Error" });
-  //   }
-  // }
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "Update password request sent" });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async verifyForgotPassword(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { forgotPasswordCode, password } = req.body;
+      const { email } = req.params;
+      if (!forgotPasswordCode || !email || !password) {
+        throw new AppError(
+          "Provide all required information",
+          HTTP_STATUSES.BAD_REQUEST.code
+        );
+      }
+      const userExist = await UserService.findUserByEmail(email);
+      if (!userExist) {
+        throw new AppError("User doesn't exist", HTTP_STATUSES.NOT_FOUND.code);
+      }
+      if (forgotPasswordCode !== userExist.forgot_password_code) {
+        throw new AppError(
+          "Cann't verify wrong code",
+          HTTP_STATUSES.BAD_REQUEST.code
+        );
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await UserService.updatePassword(userExist.id, hashedPassword);
+
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "Update password request sent" });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async changePassword(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { password } = req.body;
+      const userExist = await UserService.findUserById(req.user.id);
+      if (!userExist) {
+        throw new AppError("User doesn't exist", HTTP_STATUSES.NOT_FOUND.code);
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await UserService.updatePassword(userExist.id, hashedPassword);
+
+      res
+        .status(HTTP_STATUSES.ok.code)
+        .json({ message: "Password changed successfully" });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async searchUser(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const { userEmail } = req.query;
+      if (!userEmail || typeof userEmail !== "string") {
+        throw new AppError("No such user found!", HTTP_STATUSES.NOT_FOUND.code);
+      }
+      const userId: number = parseInt(req.user.id);
+      const userEmails = await UserService.findAllUser(userId, userEmail);
+      // console.log(userEmails);
+      res.status(HTTP_STATUSES.ok.code).json({
+        message: "all users data fetched Successfully",
+        data: userEmails,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async allUser(
+    req: Request & { user?: any },
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
+    try {
+      const allUsers = await UserService.findAllUsers();
+      // console.log(userEmails);
+      res.status(HTTP_STATUSES.ok.code).json({
+        message: "all users data fetched Successfully",
+        data: allUsers,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default UserController;
