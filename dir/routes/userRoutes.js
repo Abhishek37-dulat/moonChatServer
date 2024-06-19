@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const userController_1 = __importDefault(require("../controllers/userController"));
+const authMiddleware_1 = __importDefault(require("../middleware/authMiddleware"));
+const router = (0, express_1.Router)();
+router.post("/register", userController_1.default.addUser);
+router.post("/login", userController_1.default.signInUser);
+router.get("/profile", authMiddleware_1.default.auth, userController_1.default.userProfile);
+router.patch("/profile", authMiddleware_1.default.auth, userController_1.default.updateUserProfile);
+router.patch("/verify/:id", userController_1.default.verifyUser);
+router.post("/forgot-password", userController_1.default.forgotPasswordEmail);
+router.patch("/reset-password/:email", userController_1.default.verifyForgotPassword);
+router.patch("/change-password", authMiddleware_1.default.auth, userController_1.default.changePassword);
+router.get("/search", authMiddleware_1.default.auth, userController_1.default.searchUser);
+router.get("/alluser", authMiddleware_1.default.auth, userController_1.default.allUser);
+exports.default = router;

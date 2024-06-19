@@ -1,0 +1,341 @@
+2024-06-09T13:01:17.978Z - Database connected successfully.
+2024-06-09T13:06:06.895Z - Database connected successfully.
+2024-06-09T13:06:06.914Z - Database connection failed: SequelizeDatabaseError: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER, `image_url` VARCHAR(255), `isVerified` TINYINT(1) DEFAULT false, `forgot' at line 1
+2024-06-09T13:14:19.205Z - Database connected successfully.
+2024-06-09T13:14:19.242Z - Database connection failed: SequelizeDatabaseError: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NUMBER, `image_url` VARCHAR(255), `isVerified` TINYINT(1) DEFAULT false, `forgot' at line 1
+2024-06-09T13:19:43.216Z - Database connected successfully.
+2024-06-09T13:35:14.719Z - Database connected successfully.
+2024-06-09T13:38:51.877Z - Database connected successfully.
+2024-06-09T13:40:04.350Z - fail - Access denied. No token provided.
+2024-06-09T13:43:59.161Z - Database connected successfully.
+2024-06-09T13:44:57.332Z - fail - Access denied. No token provided.
+2024-06-09T13:46:11.543Z - Database connected successfully.
+2024-06-09T13:46:46.212Z - fail - Access denied. No token provided.
+2024-06-09T13:52:33.568Z - Database connected successfully.
+2024-06-09T13:53:04.540Z - Database connected successfully.
+2024-06-09T13:54:19.757Z - Database connected successfully.
+2024-06-09T13:54:55.734Z - fail - Please verify your account
+2024-06-09T13:58:28.993Z - fail - Incorrect password
+2024-06-09T13:58:35.201Z - fail - Incorrect password
+2024-06-09T13:58:52.319Z - fail - Incorrect password
+2024-06-09T14:02:07.424Z - Database connected successfully.
+2024-06-09T14:02:25.027Z - fail - Cann't verify wrong code
+2024-06-09T14:02:54.624Z - fail - Incorrect password
+2024-06-09T14:02:58.393Z - fail - Incorrect password
+2024-06-09T14:05:21.202Z - Database connected successfully.
+2024-06-09T14:12:13.574Z - Database connected successfully.
+2024-06-09T14:16:34.846Z - fail - Incorrect password
+2024-06-09T14:16:40.275Z - fail - Incorrect password
+2024-06-09T14:21:06.469Z - Database connected successfully.
+2024-06-09T14:24:47.365Z - Database connected successfully.
+2024-06-09T14:44:40.872Z - Database connected successfully.
+2024-06-09T14:52:07.742Z - Database connected successfully.
+2024-06-09T14:52:20.425Z - Database connected successfully.
+2024-06-09T14:55:52.067Z - Database connected successfully.
+2024-06-09T15:05:07.028Z - Database connected successfully.
+2024-06-09T15:06:38.614Z - Database connected successfully.
+2024-06-09T15:09:03.646Z - Database connected successfully.
+2024-06-09T15:09:06.686Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T22:44:12.186Z - Database connected successfully.
+2024-06-09T22:44:31.232Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T22:53:25.652Z - Database connected successfully.
+2024-06-09T22:53:32.658Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T22:54:34.142Z - Database connected successfully.
+2024-06-09T22:54:39.393Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T22:55:56.279Z - Database connected successfully.
+2024-06-09T22:56:00.686Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T22:58:25.320Z - Database connected successfully.
+2024-06-09T22:58:32.231Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T23:01:02.585Z - Database connected successfully.
+2024-06-09T23:01:08.087Z - undefined - Cannot read properties of undefined (reading 'stream')
+2024-06-09T23:02:27.395Z - Database connected successfully.
+2024-06-09T23:02:31.412Z - undefined - Region is missing
+2024-06-09T23:06:01.752Z - Database connected successfully.
+2024-06-09T23:06:11.303Z - undefined - The bucket does not allow ACLs
+2024-06-09T23:09:32.003Z - Database connected successfully.
+2024-06-09T23:12:10.586Z - Database connected successfully.
+2024-06-09T23:13:09.097Z - Database connected successfully.
+2024-06-09T23:14:14.886Z - Database connected successfully.
+2024-06-09T23:41:06.152Z - error - Failed to delete user image from the database
+2024-06-09T23:42:16.508Z - Database connected successfully.
+2024-06-09T23:42:21.496Z - error - Failed to delete user image from the database
+2024-06-09T23:43:38.459Z - Database connected successfully.
+2024-06-09T23:43:42.499Z - error - Failed to delete user image from the database
+2024-06-09T23:44:37.898Z - Database connected successfully.
+2024-06-09T23:44:40.181Z - error - Failed to delete user image from the database
+2024-06-09T23:45:52.799Z - Database connected successfully.
+2024-06-09T23:45:57.397Z - error - Failed to delete user image from the database
+2024-06-09T23:46:58.209Z - Database connected successfully.
+2024-06-09T23:47:02.219Z - error - Failed to delete user image from the database
+2024-06-09T23:52:12.100Z - Database connected successfully.
+2024-06-09T23:52:15.667Z - error - Failed to delete user image from the database
+2024-06-09T23:56:28.806Z - Database connected successfully.
+2024-06-09T23:56:30.871Z - error - Failed to delete user image from the database
+2024-06-10T00:00:57.486Z - Database connected successfully.
+2024-06-10T00:01:02.861Z - error - Failed to delete user image from the database
+2024-06-10T00:03:27.400Z - Database connected successfully.
+2024-06-10T00:03:30.919Z - error - Failed to delete user image from the database
+2024-06-10T00:04:30.198Z - Database connected successfully.
+2024-06-10T00:04:33.753Z - error - Failed to delete user image from the database
+2024-06-10T00:06:19.999Z - Database connected successfully.
+2024-06-10T00:06:22.090Z - error - Failed to delete user image from the database
+2024-06-10T06:44:16.578Z - Database connected successfully.
+2024-06-10T08:15:01.786Z - Database connected successfully.
+2024-06-10T08:16:45.811Z - Database connected successfully.
+2024-06-10T08:17:20.237Z - undefined - The bucket does not allow ACLs
+2024-06-10T08:17:48.395Z - Database connected successfully.
+2024-06-10T08:25:43.136Z - error - Failed to delete user image from the database
+2024-06-10T11:57:47.034Z - Database connected successfully.
+2024-06-10T12:06:15.603Z - Database connected successfully.
+2024-06-10T12:06:20.695Z - error - Failed to delete user image from the database
+2024-06-10T12:11:46.703Z - Database connected successfully.
+2024-06-10T12:13:41.759Z - fail - Please verify your account
+2024-06-10T12:23:11.451Z - Database connected successfully.
+2024-06-10T12:29:43.901Z - Database connected successfully.
+2024-06-10T12:32:51.667Z - Database connected successfully.
+2024-06-10T12:33:21.582Z - fail - Cann't verify wrong code
+2024-06-10T12:35:08.352Z - fail - Incorrect password
+2024-06-10T12:43:44.305Z - Database connected successfully.
+2024-06-10T12:44:10.090Z - fail - Cann't verify wrong code
+2024-06-10T12:45:52.958Z - Database connected successfully.
+2024-06-10T12:58:45.782Z - fail - Incorrect password
+2024-06-10T14:18:09.725Z - Database connected successfully.
+2024-06-11T13:59:00.299Z - Database connected successfully.
+2024-06-11T14:05:50.074Z - undefined - Cannot add or update a child row: a foreign key constraint fails (`chatapp`.`chatmembers`, CONSTRAINT `chatmembers_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+2024-06-11T14:54:50.948Z - Database connected successfully.
+2024-06-11T14:55:19.805Z - fail - Incorrect password
+2024-06-11T15:04:09.710Z - Database connected successfully.
+2024-06-11T15:04:21.423Z - undefined - userIds.filer is not a function
+2024-06-11T15:05:19.759Z - Database connected successfully.
+2024-06-11T15:05:49.166Z - undefined - userIds.filer is not a function
+2024-06-11T15:06:47.682Z - Database connected successfully.
+2024-06-11T15:06:56.815Z - fail - Duplicate USer Chat Error
+2024-06-11T15:08:22.324Z - Database connected successfully.
+2024-06-11T15:08:27.960Z - fail - One-to-one chats must have exactly 2 users.
+2024-06-11T15:10:57.175Z - Database connected successfully.
+2024-06-11T15:12:42.448Z - Database connected successfully.
+2024-06-11T15:17:55.980Z - Database connected successfully.
+2024-06-11T15:18:01.132Z - fail - you can read this chat
+2024-06-11T15:18:09.384Z - fail - you can read this chat
+2024-06-11T15:18:13.279Z - fail - you can read this chat
+2024-06-11T15:18:52.177Z - Database connected successfully.
+2024-06-11T15:18:56.920Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-11T15:20:12.450Z - Database connected successfully.
+2024-06-11T15:20:43.340Z - fail - you can read this chat
+2024-06-11T15:26:00.597Z - Database connected successfully.
+2024-06-11T19:48:29.344Z - Database connected successfully.
+2024-06-11T19:49:36.470Z - fail - you can read this chat
+2024-06-11T20:21:34.493Z - Database connected successfully.
+2024-06-11T20:24:46.686Z - Database connected successfully.
+2024-06-11T20:27:05.572Z - Database connected successfully.
+2024-06-11T20:29:12.182Z - Database connected successfully.
+2024-06-11T20:35:51.144Z - fail - No such user found!
+2024-06-11T20:35:59.727Z - fail - No such user found!
+2024-06-11T20:36:04.778Z - fail - No such user found!
+2024-06-11T20:43:03.248Z - Database connected successfully.
+2024-06-11T20:45:07.689Z - Database connected successfully.
+2024-06-11T20:46:01.401Z - Database connected successfully.
+2024-06-11T20:46:18.607Z - Database connected successfully.
+2024-06-11T20:49:22.531Z - Database connected successfully.
+2024-06-11T20:52:29.983Z - Database connected successfully.
+2024-06-11T20:54:52.526Z - Database connected successfully.
+2024-06-11T21:50:50.000Z - fail - User already exists
+2024-06-11T21:54:26.405Z - undefined - Illegal arguments: string, undefined
+2024-06-11T21:58:40.910Z - Database connected successfully.
+2024-06-11T21:58:46.181Z - fail - Incorrect password
+2024-06-11T21:58:55.837Z - fail - Please verify your account
+2024-06-11T22:03:26.316Z - fail - Incorrect password
+2024-06-11T22:03:33.089Z - fail - Please verify your account
+2024-06-12T21:47:08.765Z - Database connected successfully.
+2024-06-12T23:30:17.690Z - fail - Incorrect password
+2024-06-12T23:30:22.691Z - fail - you can read this chat
+2024-06-12T23:30:22.697Z - fail - you can read this chat
+2024-06-12T23:30:39.969Z - fail - you can read this chat
+2024-06-12T23:30:39.979Z - fail - you can read this chat
+2024-06-12T23:33:50.962Z - fail - you can read this chat
+2024-06-12T23:34:02.035Z - fail - you can read this chat
+2024-06-12T23:34:27.557Z - fail - you can read this chat
+2024-06-12T23:34:27.563Z - fail - you can read this chat
+2024-06-12T23:36:51.807Z - fail - you can read this chat
+2024-06-12T23:36:51.813Z - fail - you can read this chat
+2024-06-12T23:37:17.882Z - fail - you can read this chat
+2024-06-12T23:37:17.887Z - fail - you can read this chat
+2024-06-12T23:37:59.040Z - fail - you can read this chat
+2024-06-12T23:37:59.049Z - fail - you can read this chat
+2024-06-12T23:52:01.796Z - fail - you can read this chat
+2024-06-12T23:52:01.818Z - fail - you can read this chat
+2024-06-12T23:52:01.959Z - fail - you can read this chat
+2024-06-12T23:53:00.340Z - fail - you can read this chat
+2024-06-12T23:53:09.306Z - fail - you can read this chat
+2024-06-12T23:53:09.323Z - fail - you can read this chat
+2024-06-12T23:53:09.488Z - fail - you can read this chat
+2024-06-14T21:21:04.275Z - Database connected successfully.
+2024-06-14T21:25:30.077Z - Database connected successfully.
+2024-06-14T22:15:39.384Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:19:26.986Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:19:27.007Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:19:36.502Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:19:36.528Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:42:43.428Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:42:43.453Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:43:55.399Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:43:55.465Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:44:52.273Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-14T22:44:52.294Z - undefined - Unknown column 'NaN' in 'where clause'
+2024-06-15T07:45:42.198Z - Database connected successfully.
+2024-06-16T16:39:11.009Z - fail - you can read this chat
+2024-06-16T16:39:11.020Z - fail - you can read this chat
+2024-06-17T07:43:51.947Z - fail - No such user found!
+2024-06-17T07:45:46.012Z - fail - No such user found!
+2024-06-17T08:18:16.742Z - fail - No such user found!
+2024-06-17T08:18:27.440Z - fail - No such user found!
+2024-06-17T08:18:37.167Z - fail - No such user found!
+2024-06-17T08:18:43.892Z - fail - No such user found!
+2024-06-17T08:29:17.994Z - fail - No such user found!
+2024-06-17T08:32:55.972Z - fail - No such user found!
+2024-06-17T08:35:28.890Z - fail - No such user found!
+2024-06-17T08:38:38.379Z - fail - No such user found!
+2024-06-17T08:39:05.111Z - fail - Duplicate USer Chat Error
+2024-06-17T08:40:45.890Z - fail - No such user found!
+2024-06-17T08:40:48.370Z - fail - Duplicate USer Chat Error
+2024-06-17T08:42:33.936Z - fail - One-to-one chats must have exactly 2 users.
+2024-06-17T08:46:21.160Z - fail - you can read this chat
+2024-06-17T08:46:21.175Z - fail - you can read this chat
+2024-06-17T09:07:24.559Z - fail - No such user found!
+2024-06-17T09:08:14.326Z - fail - No such user found!
+2024-06-17T09:37:02.566Z - fail - No such user found!
+2024-06-17T09:40:32.226Z - fail - No such user found!
+2024-06-17T09:59:24.014Z - fail - Duplicate USer Chat Error
+2024-06-17T10:09:02.521Z - Database connected successfully.
+2024-06-17T10:10:16.236Z - fail - No such user found!
+2024-06-17T10:11:15.664Z - undefined - Table 'chatapp.chatmembers' doesn't exist
+2024-06-17T10:11:23.064Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:23.860Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:23.942Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:24.059Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:24.106Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:24.132Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:24.193Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:24.222Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:25.050Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:25.907Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:25.987Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:26.064Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:26.136Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:26.172Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:26.228Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:26.263Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:27.056Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:27.939Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.038Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.059Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.154Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.216Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.259Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:28.292Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:29.055Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:29.978Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.060Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.062Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.180Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.243Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.306Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:30.339Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:31.049Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.019Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.076Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.079Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.222Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.282Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.339Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.368Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:32.429Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:33.161Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.054Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.109Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.241Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.302Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.382Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:34.412Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:35.058Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.047Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.058Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.155Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.278Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.341Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.403Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:36.434Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:37.052Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.085Z - Database connected successfully.
+2024-06-17T10:11:45.103Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.109Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.112Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.122Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.134Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.140Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:45.145Z - undefined - Table 'chatapp.messages' doesn't exist
+2024-06-17T10:11:54.275Z - fail - Chat not found
+2024-06-17T10:11:56.316Z - fail - Chat not found
+2024-06-17T10:12:45.543Z - fail - you can read this chat
+2024-06-17T10:12:47.586Z - fail - you can read this chat
+2024-06-17T10:12:59.179Z - fail - No such user found!
+2024-06-17T10:13:16.200Z - fail - No such user found!
+2024-06-17T10:14:05.796Z - fail - Chat not found
+2024-06-17T10:14:05.835Z - fail - Chat not found
+2024-06-17T10:14:52.744Z - fail - you can read this chat
+2024-06-17T10:14:52.755Z - fail - you can read this chat
+2024-06-17T10:15:32.532Z - fail - Duplicate USer Chat Error
+2024-06-17T10:22:02.366Z - fail - you can read this chat
+2024-06-17T10:22:02.382Z - fail - you can read this chat
+2024-06-17T10:23:17.104Z - fail - Chat not found
+2024-06-17T10:23:17.143Z - fail - Chat not found
+2024-06-17T10:26:38.934Z - fail - Chat not found
+2024-06-17T10:26:38.995Z - fail - Chat not found
+2024-06-17T10:27:35.350Z - fail - Chat not found
+2024-06-17T10:27:35.395Z - fail - Chat not found
+2024-06-17T10:29:15.905Z - fail - Chat not found
+2024-06-17T10:29:15.946Z - fail - Chat not found
+2024-06-17T10:33:42.304Z - fail - you can read this chat
+2024-06-17T10:33:42.333Z - fail - you can read this chat
+2024-06-17T10:35:13.643Z - fail - you can read this chat
+2024-06-17T10:35:13.666Z - fail - you can read this chat
+2024-06-17T10:36:45.838Z - fail - Chat not found
+2024-06-17T10:36:45.860Z - fail - Chat not found
+2024-06-17T10:37:21.310Z - fail - you can read this chat
+2024-06-17T10:37:21.345Z - fail - you can read this chat
+2024-06-17T10:38:53.005Z - fail - you can read this chat
+2024-06-17T10:38:53.043Z - fail - you can read this chat
+2024-06-17T10:39:30.605Z - fail - you can read this chat
+2024-06-17T10:39:30.649Z - fail - you can read this chat
+2024-06-17T10:40:48.291Z - fail - you can read this chat
+2024-06-17T10:40:48.330Z - fail - you can read this chat
+2024-06-17T10:42:24.668Z - fail - you can read this chat
+2024-06-17T10:42:24.712Z - fail - you can read this chat
+2024-06-17T11:42:48.643Z - Database connected successfully.
+2024-06-17T12:16:59.498Z - Database connected successfully.
+2024-06-17T12:17:53.278Z - fail - Chat not found
+2024-06-17T12:17:53.320Z - fail - Chat not found
+2024-06-17T12:17:53.370Z - fail - Chat not found
+2024-06-17T12:17:53.404Z - fail - Chat not found
+2024-06-17T13:22:02.966Z - fail - No such user found!
+2024-06-18T11:47:54.905Z - Database connected successfully.
+2024-06-18T14:22:57.752Z - Database connected successfully.
+2024-06-18T14:24:38.389Z - Database connected successfully.
+2024-06-18T14:25:11.534Z - Database connected successfully.
+2024-06-18T15:12:29.675Z - Database connected successfully.
+2024-06-18T15:38:10.482Z - Database connected successfully.
+2024-06-19T06:36:57.931Z - Database connected successfully.
+2024-06-19T07:36:08.516Z - Database connected successfully.
+2024-06-19T07:48:54.950Z - Database connected successfully.
+2024-06-19T07:57:59.390Z - Database connected successfully.
+2024-06-19T08:07:04.995Z - Database connected successfully.
+2024-06-19T08:11:04.805Z - Database connected successfully.
+2024-06-19T08:17:12.852Z - Database connected successfully.
+2024-06-19T08:20:31.049Z - Database connected successfully.
+2024-06-19T09:09:57.638Z - Database connected successfully.
+2024-06-19T09:46:24.237Z - Database connected successfully.
+2024-06-19T09:58:21.994Z - Database connected successfully.
+2024-06-19T10:11:18.990Z - Database connected successfully.
+2024-06-19T10:15:33.672Z - Database connected successfully.
+2024-06-19T10:20:50.649Z - Database connected successfully.
+2024-06-19T10:54:31.550Z - Database connected successfully.
